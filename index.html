@@ -4,193 +4,339 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelloGiza Media | Global Digital Rights & MCN Operations</title>
+    
+    <!-- Google Fonts for Cinematic & Corporate Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Global Styles & Reset */
-        body, html {
+        /* CSS Variables for Luxury Theme */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-light: #111111;
+            --gold: #d4af37;
+            --text-main: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
+        /* Global Styles */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #080808;
-            color: #e5e5e5;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        a {
+            text-decoration: none;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--gold);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            background: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-size: 26px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         /* Hero Section */
         .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 120px 20px 80px;
-            background: radial-gradient(circle at top, #111827 0%, #080808 70%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1485083266008-a42610d486fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            padding: 0 20px;
+            margin-top: 50px;
         }
-        .hero h1 {
-            font-size: 3.5rem;
-            margin: 0 0 15px 0;
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
-        .hero p {
-            font-size: 1.25rem;
-            color: #9ca3af;
-            max-width: 600px;
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
             margin: 0 auto;
-            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        /* Expertise Grid Section */
-        .expertise-section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Sections General */
+        section {
+            padding: 100px 50px;
         }
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            color: #ffffff;
-            font-weight: 600;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        /* About Us Section */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80') center/cover;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Expertise Section */
+        .services {
+            background-color: var(--bg-light);
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .card {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--bg-dark);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 35px 30px;
-            backdrop-filter: blur(10px);
+            padding: 40px 30px;
             transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
         .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 210, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.05);
-            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card:hover::before {
+            transform: scaleX(1);
         }
         .card h3 {
-            color: #ffffff;
-            font-size: 1.3rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: 500;
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
         }
         .card p {
-            color: #a1a1aa;
+            color: var(--text-muted);
             font-size: 0.95rem;
-            margin: 0;
         }
 
-        /* Footer Section */
-        .footer {
-            background-color: #000000;
-            padding: 60px 20px 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
+            background: var(--bg-light);
+            padding: 60px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
-        .footer-locations {
+        .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-bottom: 40px;
+            justify-content: space-around;
             flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
         }
-        .location {
-            text-align: left;
+        .info-box h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
-        .location strong {
-            display: block;
-            color: #00d2ff;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
+        .info-box p, .info-box a {
+            color: var(--text-main);
+            font-size: 1.1rem;
         }
-        .location span {
-            color: #d1d5db;
-            font-size: 1rem;
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .footer-bottom p {
-            margin: 5px 0;
-            color: #6b7280;
+        footer p {
+            color: #666;
             font-size: 0.9rem;
+            margin-bottom: 10px;
         }
-        .legal-notice {
-            font-size: 0.8rem !important;
-            color: #4b5563 !important;
-            margin-top: 15px !important;
+        .legal {
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-container { flex-direction: column; }
+            .about-image { width: 100%; height: 300px; }
+            section { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">HelloGiza</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <header class="hero">
-        <h1>HelloGiza Media</h1>
-        <p>Premium Multi-Channel Network Operations & Advanced Digital Rights Management.</p>
-    </header>
-
-    <!-- Services / Expertise Section -->
-    <section class="expertise-section">
-        <h2 class="section-title">Areas of Expertise</h2>
-        <div class="grid-container">
-            
-            <div class="card">
-                <h3>Exclusive Rights & Digital Asset Management</h3>
-                <p>Comprehensive management of premium audio and visual catalogs, utilizing advanced digital fingerprinting to secure intellectual property across all global platforms.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Advanced DRM & Content ID Operations</h3>
-                <p>Strict enforcement of track, monetize, or block policies to protect core assets, alongside complex dispute resolution to safeguard creator revenues.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Global Syndication & Territorial Licensing</h3>
-                <p>Cross-border rights management, precise geofencing implementation, and the distribution of cinematic and media content to top-tier global networks.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Sovereign Legal Enforcement & Anti-Piracy</h3>
-                <p>Digital forensics tracking and rapid takedown execution, backed by sovereign legal frameworks and strict DMCA compliance to shield catalogs from piracy.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Premium MCN Operations & Talent Incubation</h3>
-                <p>Multi-Channel Network administration, providing robust protection solutions, monetization strategies, and optimized audience growth for our elite partners.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Royalty Administration & Metadata Engineering</h3>
-                <p>Efficient bulk ingestion protocols, complex metadata structuring, and transparent revenue splitting systems for seamless network operations.</p>
-            </div>
-
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>HelloGiza Media</h1>
+            <p>Premium Multi-Channel Network Operations & Advanced Digital Rights Management</p>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-locations">
-            <div class="location">
-                <strong>Global Headquarters</strong>
-                <span>Giza, Egypt</span>
-            </div>
-            <div class="location">
-                <strong>MENA Regional Hub</strong>
-                <span>Dubai, United Arab Emirates</span>
+    <!-- About Us Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <p>Established in 2017, HelloGiza Media has grown to become a cornerstone in the digital rights management and premium media production landscape. We specialize in the convergence of sovereign legal frameworks and cutting-edge digital forensics.</p>
+                <p>Our infrastructure is designed to protect, distribute, and monetize exclusive media assets on a global scale. Partnering with top-tier creators and production houses, we ensure that intellectual property remains secure across all digital borders.</p>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; Est. 2017 - 2026 HelloGiza Media. All Rights Reserved.</p>
-            <p class="legal-notice">Protected by Sovereign Legal Frameworks & International Copyright Laws. Unauthorized use or reproduction of managed assets is strictly prohibited.</p>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="services">
+        <h2 class="section-title">Areas of Expertise</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Exclusive Rights & Digital Asset</h3>
+                <p>Comprehensive management of premium audio and visual catalogs, utilizing advanced digital fingerprinting to secure intellectual property across all global platforms.</p>
+            </div>
+            <div class="card">
+                <h3>Advanced DRM & Content ID</h3>
+                <p>Strict enforcement of track, monetize, or block policies to protect core assets, alongside complex dispute resolution to safeguard creator revenues.</p>
+            </div>
+            <div class="card">
+                <h3>Global Syndication</h3>
+                <p>Cross-border rights management, precise geofencing implementation, and the distribution of cinematic and media content to top-tier global networks.</p>
+            </div>
+            <div class="card">
+                <h3>Sovereign Legal Enforcement</h3>
+                <p>Digital forensics tracking and rapid takedown execution, backed by sovereign legal frameworks and strict DMCA compliance to shield catalogs.</p>
+            </div>
+            <div class="card">
+                <h3>Premium MCN Operations</h3>
+                <p>Multi-Channel Network administration, providing robust protection solutions, monetization strategies, and optimized audience growth.</p>
+            </div>
+            <div class="card">
+                <h3>Royalty Administration</h3>
+                <p>Efficient bulk ingestion protocols, complex metadata structuring, and transparent revenue splitting systems for seamless network operations.</p>
+            </div>
         </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <p>For legal inquiries, rights management, and corporate partnerships, please reach out to our dedicated teams.</p>
+            <div class="contact-info">
+                <div class="info-box">
+                    <h4>Direct Email</h4>
+                    <!-- هنا تقدر تغير الإيميل للإيميل الرسمي بتاعك -->
+                    <a href="mailto:legal@hellogiza.com">legal@hellogiza.com</a>
+                </div>
+                <div class="info-box">
+                    <h4>Global Headquarters</h4>
+                    <p>Giza, Egypt</p>
+                </div>
+                <div class="info-box">
+                    <h4>Regional Hub</h4>
+                    <p>Dubai, UAE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Est. 2017 - 2026 HelloGiza Media. All Rights Reserved.</p>
+        <p class="legal">Protected by Sovereign Legal Frameworks & International Copyright Laws. Unauthorized use or reproduction of managed assets is strictly prohibited.</p>
     </footer>
 
 </body>
